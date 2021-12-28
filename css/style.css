@@ -84,6 +84,10 @@ template {
   background-size: 46px 46px;
 
   box-shadow: 0px 0px 1px #11182d;
+
+  animation-name: move;
+  animation-duration: 800ms;
+  animation-timing-function: ease;
 }
 
 .link-telegram {
@@ -141,4 +145,12 @@ template {
   border-top-right-radius: 12px;
   border-bottom-right-radius: 12px;
   padding: 12px;
+}
+
+@keyframes move {
+  from {
+    top: 0px;
+  }
+  to {
+  }
 }
