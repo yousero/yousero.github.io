@@ -1,0 +1,32 @@
+<p><textarea id="codeText"></textarea></p>
+<input type="file" id="fileInp" style="display:none">
+<button id="openBtn">open</button>
+<button id="runBtn">run</button>
+<a id="downloadLink" href="data:text/plain;charset=UTF-8,text" download="download">download</a>
+<script>
+  const codeText = document.querySelector('#codeText')
+  const fileInp = document.querySelector('#fileInp')
+  const runBtn = document.querySelector('#runBtn')
+  const openBtn = document.querySelector('#openBtn')
+  const downloadLink = document.querySelector('#downloadLink')
+
+  codeText.onblur = () => {
+    const r = 'data:text/plain;charset=UTF-8,'
+    downloadLink.href = r + encodeURIComponent(codeText.value)
+  }
+
+  runBtn.onclick = () => {
+    eval(codeText.value)
+  }
+
+  openBtn.onclick = () => {fileInp.click()}
+
+  fileInp.onchange = (e) => {
+    const file = fileInp.files[0]
+    const reader = new FileReader()
+    reader.onload = () => {
+      codeText.value = reader.result
+    }
+    reader.readAsText(file)
+  }
+</script>
